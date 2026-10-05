@@ -37,7 +37,8 @@ const Contact = () => {
 
         const data = await response.json();
         if (!data.success) {
-          console.warn("Web3Forms response warning:", data.message);
+          console.error("Web3Forms error:", data);
+          throw new Error(data.message || "Failed to send email notification");
         }
       } else {
         console.warn("REACT_APP_WEB3FORMS_ACCESS_KEY is not set. Email notification skipped.");
@@ -56,7 +57,7 @@ const Contact = () => {
       setMessage("");
       toast.success("Message Sent Successfully!");
     } catch (error) {
-      toast.error("Failed to send message. Please try again.");
+      toast.error(error.message || "Failed to send message. Please try again.");
       console.error(error);
     } finally {
       setDisableBtn(false);
