@@ -15,7 +15,7 @@ const Contact = () => {
     e.preventDefault();
     setDisableBtn(true);
     try {
-      const accessKey = process.env.REACT_APP_WEB3FORMS_ACCESS_KEY || "f115ba89-2c05-4b0d-9ae7-734f3de7870d";
+      const accessKey = process.env.REACT_APP_WEB3FORMS_ACCESS_KEY;
 
       // 1. Send email notification via Web3Forms if access key is configured
       if (accessKey) {
