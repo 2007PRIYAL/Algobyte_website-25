@@ -30,6 +30,19 @@ const logger = {
 app.use(cors());
 app.use(express.json());
 
+// Root & Health check routes
+app.get("/", (req, res) => {
+  res.json({
+    status: "ok",
+    message: "Algobyte backend is running!",
+    mongoStatus: mongoose.connection.readyState === 1 ? "connected" : "disconnected/connecting"
+  });
+});
+
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
 // MongoDB Connection
 mongoose
   .connect(process.env.MONGODB_URI)

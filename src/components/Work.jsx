@@ -3,6 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { API_BASE_URL } from "../config";
 
 
 const logger = {
@@ -30,7 +31,7 @@ const Work = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/work")
+      .get(`${API_BASE_URL}/work`)
       .then((response) => {
         logger.info("Work data received:", response.data);
         setProjects(response.data);

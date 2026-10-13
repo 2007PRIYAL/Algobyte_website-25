@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { API_BASE_URL } from "../config";
 
 
 const logger = {
@@ -26,7 +27,7 @@ const Timeline = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/timeline")
+      .get(`${API_BASE_URL}/timeline`)
       .then((response) => {
         logger.info("Timeline data received:", response.data);
         setProjects(response.data);
